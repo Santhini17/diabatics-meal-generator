@@ -110,24 +110,15 @@
                     </div>
                     <div class="mb-4">
                         <label class="block text-green font-bold mb-2">Height (in cm):</label>
-                        <input type="number" name="height" id="height" class="w-full px-4 py-2 border border-green rounded-lg focus:outline-none focus:border-green" required>
+                        <input type="number" name="height" id="height" class="w-full px-4 py-2 border border-green rounded-lg focus:outline-none focus:border-green " min="0" max="200" required>
                     </div>
                     <div class="mb-4">
                         <label class="block text-green font-bold mb-2">Weight (in kg):</label>
-                        <input type="number" name="weight" id="weight" class="w-full px-4 py-2 border border-green rounded-lg focus:outline-none focus:border-green" required>
+                        <input type="number" name="weight" id="weight" class="w-full px-4 py-2 border border-green rounded-lg focus:outline-none focus:border-green" min="30" max="150" required>
                     </div>
                     <div class="mb-4">
                         <label class="block text-green font-bold mb-2">Blood Glucose Level:</label>
-                        <input type="number" name="blood-glucose-level" id="blood-glucose-level" class="w-full px-4 py-2 border border-green rounded-lg focus:outline-none focus:border-green" required>
-                    </div>
-                    <div class="mb-4">
-                        <label class="block text-green font-bold mb-2">Vegetarian or Non-Vegetarian:</label>
-                        <label class="inline-block mr-4">
-                            <input type="radio" name="diet" value="vegetarian"> Vegetarian
-                        </label>
-                        <label class="inline-block">
-                            <input type="radio" name="diet" value="non-vegetarian"> Non-Vegetarian
-                        </label>
+                        <input type="number" name="blood-glucose-level" id="blood-glucose-level" class="w-full px-4 py-2 border border-green rounded-lg focus:outline-none focus:border-green" min="50" max="400" required>
                     </div>
                     <div class="flex justify-center">
                         <button type="button" id="generateMealButton" class="px-6 py-3 rounded-full bg-green text-white font-bold hover:bg-white hover:text-green border border-green hover:border-green transition-all duration-200">Generate Meal Plan 🍴</button>

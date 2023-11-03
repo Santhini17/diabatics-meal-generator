@@ -1,20 +1,32 @@
 document.addEventListener('DOMContentLoaded', function () {
-
-    const tableStyles = `
-                <style>
-                    table {
-                        border-collapse: collapse;
-                        width: 100%;
-                        border: 1px solid green; 
-                    }
-
-                    table, th, td {
-                        border: 1px solid black;
-                        text-align: center;
-                    }
-                </style>
-            `;
-            document.head.insertAdjacentHTML('beforeend', tableStyles);
+    const style = document.createElement('style');
+    style.textContent = `
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            border: 1px solid green;
+        }
+        table, th, td {
+            border: 1px solid black;
+            text-align: center;
+        }
+        h2 {
+            font-weight: bold;
+            font-size: 40px;
+            margin-top: 20px;
+        }
+        h3 {
+            font-size: 30px;
+        }
+        ul {
+            font-size: 23px;
+            margin: 10px 0;
+        }
+        li {
+            list-style: disc;
+        }
+    `;
+    document.head.appendChild(style);
 
     const generateMealButton = document.getElementById('generateMealButton');
     generateMealButton.addEventListener('click', async () => {
@@ -23,6 +35,11 @@ document.addEventListener('DOMContentLoaded', function () {
         const height = document.getElementById('height').value;
         const weight = document.getElementById('weight').value;
         const bloodGlucoseLevel = document.getElementById('blood-glucose-level').value;
+
+        if (!name || !dob || height < 0 || height > 300 || weight < 0 || weight > 300 || bloodGlucoseLevel < 0 || bloodGlucoseLevel > 300) {
+            alert('Please fill in all the required fields with valid values.');
+            return;
+        }
 
         if (!name || !dob || !height || !weight || !bloodGlucoseLevel) {
             alert('Please fill in all the required fields.');
@@ -36,16 +53,12 @@ document.addEventListener('DOMContentLoaded', function () {
         mealPlanTable.appendChild(loader);
 
         // Load data from CSV
-        const csvFilePath = 'source/recipes.csv'; // Change to the actual path of your CSV file
+        const csvFilePath = 'source/recipes.csv';
         fetchDataFromCSV(csvFilePath)
             .then(data => {
-                // Generate meal plans for 7 days using the loaded data
+        
                 const mealPlans = generateMealPlans(data);
-
-                // Display the meal plans in a table format
                 displayMealPlans(mealPlans, mealPlanTable, data);
-
-                // Remove the loader
                 mealPlanTable.removeChild(loader);
             })
             .catch(error => {
@@ -55,7 +68,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     async function fetchDataFromCSV(csvFilePath) {
-        // Fetch and parse the CSV file
         const response = await fetch(csvFilePath);
         if (!response.ok) {
             throw new Error('Network response was not ok');
@@ -70,7 +82,6 @@ document.addEventListener('DOMContentLoaded', function () {
         const mealPlans = [];
 
         for (let day = 0; day < days; day++) {
-            // Generate meals for each day
             const dailyMeals = {
                 Breakfast: getRandomMeals(data),
                 Lunch: getRandomMeals(data),
@@ -84,60 +95,60 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function getRandomMeals(data) {
-        // Replace this with your logic to select random meals from the loaded data
-        // You can use data from your CSV to determine which meals to include
         const randomMeals = [];
         for (let i = 0; i < 3; i++) {
             const randomIndex = Math.floor(Math.random() * data.length);
-            randomMeals.push(data[randomIndex].Recipe);
+            randomMeals.push(data[randomIndex]);
         }
         return randomMeals;
     }
 
     function displayMealPlans(mealPlans, mealPlanTable, data) {
-        // Create and populate the table with meal plan data
-        const table = document.createElement('table');
-        table.classList.add('meal-plan-table');
-
-        // Create table headers for days
-        const daysHeader = document.createElement('tr');
-        daysHeader.innerHTML = '<th></th>';
-        for (let day = 0; day < 7; day++) {
-            const dayHeader = document.createElement('th');
-            dayHeader.textContent = `Day ${day + 1}`;
-            daysHeader.appendChild(dayHeader);
-        }
-        table.appendChild(daysHeader);
-
-        // Create table rows for breakfast, lunch, and dinner
-        const mealTimes = ['Breakfast', 'Lunch', 'Dinner'];
-        mealTimes.forEach(mealTime => {
-            const mealRow = document.createElement('tr');
-            mealRow.innerHTML = `<td>${mealTime}</td>`;
-            mealPlans.forEach(dailyMeals => {
-                const mealCell = document.createElement('td');
-                const mealList = document.createElement('ul');
-
-                dailyMeals[mealTime].forEach(meal => {
-                    const mealItem = document.createElement('li');
-                    mealItem.textContent = meal;
-                    mealList.appendChild(mealItem);
-                });
-
-                mealCell.appendChild(mealList);
-                mealRow.appendChild(mealCell);
-            });
-
-            // Check if there are meals for this meal time, if not, skip it
-            if (mealPlans.some(dailyMeals => dailyMeals[mealTime].length > 0)) {
-                table.appendChild(mealRow);
-            }
-        });
-
-        mealPlanTable.appendChild(table);
-    }
-
+        mealPlans.forEach((dailyMeals, day) => {
+            const dayHeader = document.createElement('h2');
+            dayHeader.textContent = `Day ${day + 1}:`;
+            mealPlanTable.appendChild(dayHeader);
     
+            const mealTimes = ['Breakfast', 'Lunch', 'Dinner'];
+            mealTimes.forEach(mealTime => {
+                const mealTimeHeader = document.createElement('h3');
+                mealTimeHeader.textContent = `${mealTime}:`;
+                mealPlanTable.appendChild(mealTimeHeader);
+    
+                const mealsForThisTime = dailyMeals[mealTime];
+    
+                if (mealsForThisTime.length === 0) {
+                    const randomMeal = getRandomMeal(data);
+                    const mealName = randomMeal['Recipe'];
+                    const mealIngredients = randomMeal['Ingredients'];
+    
+                    const mealNameHeader = document.createElement('p');
+                    mealNameHeader.innerHTML = `1. Meal Name: ${mealName || 'No meal available'} ,  Ingredients: ${mealIngredients || 'No ingredients available'}`;
+                    mealPlanTable.appendChild(mealNameHeader);
+                } else {
+                    for (let index = 0; index < 3; index++) {
+                        if (index < mealsForThisTime.length) {
+                            const meal = mealsForThisTime[index];
+                            const mealName = meal['Recipe'];
+                            const mealIngredients = meal['Ingredients'];
+    
+                            const mealNameHeader = document.createElement('p');
+                            mealNameHeader.innerHTML = `${index + 1}. Meal Name: ${mealName || 'No meal available'} ,  Ingredients: ${mealIngredients || 'No ingredients available'}`;
+                            mealPlanTable.appendChild(mealNameHeader);
+                        } else {
+                            const randomMeal = getRandomMeal(data);
+                            const mealName = randomMeal['Recipe'];
+                            const mealIngredients = randomMeal['Ingredients'];
+    
+                            const mealNameHeader = document.createElement('p');
+                            mealNameHeader.innerHTML = `${index + 1}. Meal Name: ${mealName || 'No meal available'} ,  Ingredients: ${mealIngredients || 'No ingredients available'}`;
+                            mealPlanTable.appendChild(mealNameHeader);
+                        }
+                    }
+                }
+            });
+        });
+    }
     
 
     const toggleButton = document.getElementById('toggleMenuButton');
@@ -152,9 +163,8 @@ document.addEventListener('DOMContentLoaded', function () {
         mobileNav.classList.toggle('hidden');
     });
 
-    // Add the existing code for the send message button
     document.getElementById('sendMessageButton').addEventListener('click', () => {
-        const name = encodeURIComponent(document.getElementById('user-name').value);
+        const name = encodeURIComponent(document.getElementById('name').value);
         const email = encodeURIComponent(document.getElementById('email').value);
         const subject = encodeURIComponent(document.getElementById('subject').value);
         const message = encodeURIComponent(document.getElementById('message').value);

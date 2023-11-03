@@ -13,10 +13,8 @@ def load_meals_from_csv(csv_path):
     return meals
 
 def generate_meal_plan(name, gender, dob, bmi, height, weight, blood_glucose_level):
-    # Load meals from a CSV file
     meals = load_meals_from_csv('source/recipes.csv')
 
-    # Filter meals based on user input
     filtered_meals = []
     for meal in meals:  
         if (
@@ -29,7 +27,6 @@ def generate_meal_plan(name, gender, dob, bmi, height, weight, blood_glucose_lev
     if not filtered_meals:
         return "No matching meal plans found."
 
-    # Create a meal plan response
     meal_plan = f"Meal Plan for {name}:\n\n"
     meal_plan += "\n".join(filtered_meals)
 
