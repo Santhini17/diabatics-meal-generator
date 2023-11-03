@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetics Meal Planner</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+
+</head>
+
+<body class="bg-white"> 
+    
+    <!-- Menu -->
+    <section class="bg-green px-5" id="home">
+      <nav class="bg-green p-5 text-white">
+        <div class="container mx-auto flex justify-between items-center">
+          <div class="text-2xl font-bold hover:font-extrabold "><a href="index.html">Diabetics Meal Planner.</a></div>
+          <div class="md:hidden">
+            <button class="text-white " id="toggleMenuButton">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+              </svg>
+            </button>
+          </div>
+          <div class="hidden text-lg  md:flex space-x-4" id="navLinks">
+            <a href="#home" class="hover:underline">Home</a>
+            <a href="#about" class="hover:underline">About</a>
+            <a href="#planner" class="hover:underline">Planner</a>
+            <a href="#contact" class="hover:underline">Contact</a>
+            <a href=""></a>
+          </div>
+        </div>
+      </nav>
+    <!-- Mobile Menu -->
+      <div class="fixed inset-0 bg-green z-50 hidden" id="mobileNav">
+        <div class="flex flex-col justify-center items-center h-full bg-green">
+          <button class="text-white absolute top-4 right-4" id="toggleMenuButtonMobile">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+          <a href="#home" class="text-white text-2xl mb-4">Home</a>
+          <a href="#about" class="text-white text-2xl mb-4">About</a>
+          <a href="#planner" class="text-white text-2xl mb-4">Planner</a>
+          <a href="#contact" class="text-white text-2xl mb-4">Contact</a>
+        </div>
+      </div>
+    
+      <hr class="border-white mx-auto">
+
+      <!-- Hero Section -->
+      <section class="bg-green text-white h-full">
+        <div class="container mx-auto px-4">
+          <div class="block md:hidden mb-6 pb-6 mt-5">
+            <img class="sm:w-auto md:w-1/2 rounded-lg mb-4 " src="images/hero-bg.png" alt="Image">
+            <h5 class="text-xl text-white md:text-2xl">Welcome to👋,</h5>
+            <h1 class="text-4xl text-white md:text-5xl font-bold mb-4">Diabetics Meal Generator</h1>
+            <p class="text-lg md:text-xl text-white">Here you can input your details in the below input form and generate your reciepe based on the details given. </p>
+            <a href="#planner">
+              <button class="mt-8 px-6 py-3 rounded-full bg-white text-green font-bold hover:bg-green border border-green hover:border-white hover:text-white transition-all duration-200">Generate Meal 🍴</button>
+            </a>
+            </div>
+          
+          <div class="hidden md:flex items-center justify-between mb-6">
+            <div class="w-1/2 px-12 mx-14">
+              <h5 class="text-xl text-white md:text-2xl">Welcome to👋,</h5>
+              <h1 class="text-4xl md:text-5xl font-bold mb-4">Diabetics Meal Generator.</h1>
+              <p class="text-lg md:text-xl text-white">Here you can input your details in the below input form and generate your reciepe based on thetails given.</p>
+              <a href="#planner">
+              <button class="mt-8 px-6 py-3 rounded-full bg-white text-green font-bold hover:bg-green border border-green hover:border-white hover:text-white transition-all duration-200">Generate Meal 🍴</button>
+            </a>
+            </div>
+            <div class="w-1/2">
+              <img class="w-auto h-auto rounded-sm " src="images/hero-bg.png" alt="Image">
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+    
+    <!-- About -->
+    <section class="bg-white mt-10 " id="about">
+        <div class="container px-10 md:py-10 md:px-40">
+          <div class="items-center">
+            <div class="w-full mb-4">
+              <h2 class="text-4xl text-green md:text-5xl font-bold mb-4">About Us</h2>
+              <p class="text-green"> I'm a web and app designer and developer, proficient in React.js for web projects and Java for app development. With React.js, I create dynamic and user-friendly web applications, and in Java, I design mobile apps that run seamlessly on Android devices. My focus is on delivering top-notch digital solutions that blend functionality and aesthetics, ensuring your needs are not just met, but exceeded. </p>
+              <p class="text-green">  In the realm of web and app development, I bring the power of React.js for web applications and Java for mobile app creation. With React.js, I build engaging and responsive web experiences, while Java enables me to craft smooth-running Android apps. My goal is to provide you with digital solutions that not only meet your expectations but also leave a lasting impression.</p>
+            </div>            
+          </div>
+    </section>
+    
+
+    <!-- Planner -->
+    <section class="bg-white mt-10" id="planner">
+    <div class="container px-10 md:py-10 md:px-40">
+        <div class="items-center">
+            <div class="w-full mb-4">
+                <h2 class="text-4xl text-green md:text-5xl font-bold mb-4">Meal Planner</h2>
+                <form id="planner-form">
+                    <div class="mb-4">
+                        <label class="block text-green font-bold mb-2">Name:</label>
+                        <input type="text" name="name" id="name" class="w-full px-4 py-2 border border-green rounded-lg focus:outline-none focus:border-green" required></div>
+                    <div class="mb-4">
+                        <label class="block text-green font-bold mb-2">Gender:</label>
+                        <label class="inline-block mr-4">
+                            <input type="radio" name="gender" value="male"> Male
+                        </label>
+                        <label class="inline-block">
+                            <input type="radio" name="gender" value="female"> Female
+                        </label>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-green font-bold mb-2">Date of Birth:</label>
+                        <input type="date" name="dob" id="dob" class="w-full px-4 py-2 border border-green rounded-lg focus:outline-none focus:border-green" required>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-green font-bold mb-2">Height (in cm):</label>
+                        <input type="number" name="height" id="height" class="w-full px-4 py-2 border border-green rounded-lg focus:outline-none focus:border-green" required>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-green font-bold mb-2">Weight (in kg):</label>
+                        <input type="number" name="weight" id="weight" class="w-full px-4 py-2 border border-green rounded-lg focus:outline-none focus:border-green" required>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-green font-bold mb-2">Blood Glucose Level:</label>
+                        <input type="number" name="blood-glucose-level" id="blood-glucose-level" class="w-full px-4 py-2 border border-green rounded-lg focus:outline-none focus:border-green" required>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-green font-bold mb-2">Vegetarian or Non-Vegetarian:</label>
+                        <label class="inline-block mr-4">
+                            <input type="radio" name="diet" value="vegetarian"> Vegetarian
+                        </label>
+                        <label class="inline-block">
+                            <input type="radio" name="diet" value="non-vegetarian"> Non-Vegetarian
+                        </label>
+                    </div>
+                    <div class="flex justify-center">
+                        <button type="button" id="generateMealButton" class="px-6 py-3 rounded-full bg-green text-white font-bold hover:bg-white hover:text-green border border-green hover:border-green transition-all duration-200">Generate Meal Plan 🍴</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    </section>
+
+
+    <!-- Display Section -->
+    <section class="bg-white py-10 px-8 md:px-28">
+        <div id="meal-plan-table" class="container mx-auto md:px-16">
+            <h2 class="text-4xl text-green font-bold mb-8">Generated Meal Plan</h2>
+            <div id="meal-plan-table">
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Contact -->
+    <section class="bg-white py-10 px-8 md:px-28" id="contact">
+      <div class="container mx-auto md:px-16">
+        <h2 class="text-4xl text-green font-bold mb-8">Contact Me:</h2>
+        <form>
+          <div class="mb-4">
+            <label for="name" class="block text-green font-bold mb-2">Name:</label>
+            <input type="text" name="name" id="user-name" class="w-full px-4 py-2 border border-green rounded-lg focus:outline-none focus:border-green" required>
+          </div>
+          <div class="mb-4">
+            <label for="email" class="block text-green font-bold mb-2">Email:</label>
+            <input type="email" name="email" id="email" class="w-full px-4 py-2 border border-green rounded-lg focus:outline-none focus:border-green" required>
+          </div>
+          <div class="mb-4">
+            <label for="subject" class="block text-green font-bold mb-2">Subject:</label>
+            <input type="text" name="subject" id="subject" class="w-full px-4 py-2 border border-green rounded-lg focus:outline-none focus:border-green" required>
+          </div>
+          <div class="mb-4">
+            <label for="message" class="block text-green font-bold mb-2">Message:</label>
+            <textarea name="message" id="message" rows="4" class="w-full px-4 py-2 border border-green rounded-lg focus:outline-none focus:border-green" required></textarea>
+          </div>
+          <div class="flex justify-center">
+            <button type="button" id="sendMessageButton" class="px-6 py-3 rounded-full bg-green text-white font-bold hover:bg-white hover:text-green border border-green hover:border-green transition-all duration-200">Send Message</button>
+          </div>
+        </form>
+      </div>
+    </section>
+    
+    <section id="footer" class="bg-green h-8 text-center">
+      <a class=" text-sm text-white align-middle">Diabetics Meal Planner | 2023 </a>
+    
+    </section>
+      
+
+    <script src="static/js/script.js"></script>
+
+</body>
+</html>
