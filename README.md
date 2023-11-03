@@ -1,6 +1,4 @@
 # diabatics-meal-generator
-Readme:
-API Key: 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
 
 How does this Works:
 1. Gathers information from the user via input form.
