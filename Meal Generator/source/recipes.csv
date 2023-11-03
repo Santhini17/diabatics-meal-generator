@@ -1,0 +1,113 @@
+Meal,Recipe,Ingredients,Age,BMI,Glucose Level
+1,Scrambled Eggs,"Eggs, milk, butter, salt, pepper",25,22.1,90
+2,Grilled Chicken Salad,"Chicken breast, lettuce, tomatoes, cucumber, dressing",35,24.8,95
+3,Spaghetti Bolognese,"Ground beef, spaghetti, tomatoes, garlic, herbs",42,28.3,100
+1,Oatmeal,"Rolled oats, milk, honey, bananas, nuts",28,25,88
+2,Quinoa Bowl,"Quinoa, black beans, corn, bell pepper, cilantro",30,23.5,92
+3,Lemon Herb Roasted Chicken,"Chicken, lemon, rosemary, garlic, olive oil",40,27.7,98
+1,Greek Salad,"Cucumbers, tomatoes, olives, feta cheese, olive oil",33,26.1,93
+2,Vegetable Stir-Fry,"Broccoli, carrots, bell peppers, tofu, soy sauce",38,25.6,96
+3,Baked Salmon,"Salmon, dill, lemon, garlic, olive oil",45,29,101
+1,Berry Smoothie,"Mixed berries, yogurt, honey, chia seeds",31,23.7,91
+2,Caprese Sandwich,"Ciabatta bread, mozzarella cheese, tomatoes, basil",36,24.5,94
+3,Vegetable Curry,"Mixed vegetables, curry sauce, rice",47,30.2,103
+1,Pancakes,"Pancake mix, syrup, butter, berries",27,24.8,89
+2,Veggie Omelette,"Eggs, spinach, mushrooms, cheese, salt, pepper",32,25.9,92
+3,Beef Stew,"Beef, potatoes, carrots, onions, beef broth",49,31.8,105
+1,Acai Bowl,"Acai puree, granola, banana, strawberries, honey",29,23.4,87
+2,Chicken Wrap,"Chicken strips, tortilla, lettuce, tomatoes, dressing",34,24.1,97
+3,Lentil Soup,"Lentils, onions, carrots, celery, vegetable broth",51,32.5,107
+1,French Toast,"Bread, eggs, milk, syrup, butter",26,23.2,88
+2,Tofu Scramble,"Tofu, bell peppers, onions, turmeric, cumin",37,25.1,99
+3,Shrimp Scampi,"Shrimp, linguine, garlic, butter, white wine",53,33.7,110
+1,Cereal with Milk,"Cereal, milk",24,22.3,86
+2,Garden Salad,"Mixed greens, cherry tomatoes, cucumbers, dressing",39,25.4,101
+3,BBQ Chicken,"Chicken drumsticks, BBQ sauce, coleslaw, cornbread",55,34.6,112
+1,Smoothie Bowl,"Spinach, banana, almond milk, chia seeds, granola",22,21.4,85
+2,Pita Sandwich,"Pita bread, hummus, falafel, lettuce, tomatoes",41,26.2,105
+3,Beef Tacos,"Ground beef, tortillas, lettuce, cheese, salsa",57,35.2,115
+1,Blueberry Muffins,"Flour, blueberries, sugar, eggs, baking powder",23,22.7,87
+2,Sushi Roll,"Rice, nori seaweed, fish, cucumber, avocado",44,28.8,102
+3,Veggie Curry,"Mixed vegetables, curry sauce, rice",59,36.1,120
+1,Waffle Breakfast,"Waffle mix, syrup, bacon, eggs, butter",21,21,84
+2,Caprese Panini,"Ciabatta bread, mozzarella cheese, tomatoes, basil",46,29.6,104
+3,Chicken Enchiladas,"Chicken, tortillas, enchilada sauce, cheese",61,37.3,125
+1,Berry Parfait,"Greek yogurt, mixed berries, honey, granola",20,20.5,82
+2,Falafel Bowl,"Falafel, brown rice, hummus, cucumber, tahini",48,30.7,108
+3,Beef Burritos,"Ground beef, tortillas, beans, rice, cheese",63,38.5,130
+1,Omelette,"Eggs, cheese, spinach, mushrooms, bell peppers",19,19.9,80
+2,Mediterranean Salad,"Romaine lettuce, olives, red onion, feta cheese, dressing",51,32.4,110
+3,Teriyaki Chicken,"Chicken thighs, teriyaki sauce, broccoli, rice",65,39.8,135
+1,Pancake Stack,"Pancake mix, maple syrup, whipped cream, strawberries",18,19.2,78
+2,Caprese Pasta,"Pasta, cherry tomatoes, mozzarella, basil, balsamic glaze",54,34.2,115
+3,Beef Stroganoff,"Beef, egg noodles, mushrooms, sour cream, onion",67,40.7,140
+1,Cinnamon French Toast,"Bread, eggs, cinnamon, syrup, powdered sugar",17,18.6,76
+2,Veggie Burrito,"Veggie patty, tortilla, lettuce, tomatoes, guacamole",57,36.7,120
+3,Chili,"Ground beef, kidney beans, tomatoes, chili powder",69,41.9,145
+,,,Age 20-70,BMI 20-29,Glucose 80-120
+,,,Age 20-70,BMI 20-28,Glucose 80-115
+,,,Age 20-70,BMI 20-28,Glucose 80-115
+,,,Age 20-70,BMI 20-28,Glucose 80-115
+,,,Age 25-70,BMI 20-28,Glucose 85-115
+,,,Age 20-70,BMI 20-28,Glucose 80-115
+,,,Age 25-70,BMI 20-28,Glucose 85-115
+,,,Age 20-70,BMI 20-28,Glucose 80-115
+,,,Age 20-70,BMI 20-29,Glucose 80-120
+,,,Age 25-70,BMI 20-29,Glucose 85-120
+,,,Age 20-70,BMI 20-28,Glucose 80-115
+,,,Age 20-70,BMI 20-29,Glucose 80-120
+,,,Age 20-70,BMI 20-28,Glucose 80-115
+,,,Age 20-70,BMI 20-28,Glucose 80-115
+,,,Age 25-70,BMI 20-29,Glucose 85-115
+,,,Age 20-70,BMI 20-29,Glucose 80-120
+,,,Age 20-70,BMI 20-28,Glucose 80-115
+,,,Age 25-70,BMI 20-29,Glucose 85-115
+,,,Age 20-70,BMI 20-28,Glucose 80-115
+,,,Age 20-70,BMI 20-28,Glucose 80-115
+,,,Age 20-70,BMI 20-29,Glucose 80-120
+,,,Age 25-70,BMI 20-28,Glucose 85-115
+,,,Age 20-70,BMI 20-28,Glucose 80-115
+,,,Age 20-70,BMI 20-29,Glucose 80-120
+,,,Age 20-70,BMI 20-28,Glucose 80-115
+,,,Age 20-70,BMI 20-28,Glucose 80-115
+,,,Age 20-70,BMI 20-29,Glucose 80-120
+,,,Age 25-70,BMI 20-28,Glucose 85-115
+,,,Age 20-70,BMI 20-28,Glucose 80-115
+,,,Age 20-70,BMI 20-29,Glucose 80-120
+,,,Age 20-70,BMI 20-28,Glucose 80-115
+,,,Age 20-70,BMI 20-29,Glucose 80-120
+,,,Age 20-70,BMI 20-28,Glucose 80-115
+,,,Age 20-70,BMI 20-29,Glucose 80-120
+,,,Age 20-70,BMI 20-28,Glucose 80-115
+,,,Age 25-70,BMI 20-29,Glucose 85-115
+,,,Age 20-70,BMI 20-28,Glucose 80-115
+,,,Age 20-70,BMI 20-29,Glucose 80-120
+,,,Age 25-70,BMI 20-28,Glucose 85-115
+,,,Age 20-70,BMI 20-29,Glucose 80-120
+,,,Age 20-70,BMI 20-28,Glucose 80-115
+,,,Age 25-70,BMI 20-29,Glucose 85-115
+,,,Age 20-70,BMI 20-28,Glucose 80-120
+,,,Age 20-70,BMI 20-29,Glucose 80-115
+,,,Age 25-70,BMI 20-28,Glucose 85-115
+,,,Age 20-70,BMI 20-29,Glucose 80-120
+,,,Age 20-70,BMI 20-28,Glucose 80-115
+,,,Age 20-70,BMI 20-28,Glucose 80-115
+,,,Age 20-70,BMI 20-29,Glucose 80-120
+,,,Age 25-70,BMI 20-28,Glucose 85-115
+,,,Age 20-70,BMI 20-29,Glucose 80-120
+,,,Age 20-70,BMI 20-28,Glucose 80-115
+,,,Age 20-70,BMI 20-28,Glucose 80-115
+,,,Age 20-70,BMI 20-28,Glucose 80-115
+,,,Age 25-70,BMI 20-28,Glucose 85-115
+,,,Age 20-70,BMI 20-28,Glucose 80-115
+,,,Age 25-70,BMI 20-28,Glucose 85-115
+,,,Age 20-70,BMI 20-28,Glucose 80-115
+,,,Age 20-70,BMI 20-29,Glucose 80-120
+,,,Age 25-70,BMI 20-29,Glucose 85-120
+,,,Age 20-70,BMI 20-28,Glucose 80-115
+,,,Age 20-70,BMI 20-29,Glucose 80-120
+,,,Age 20-70,BMI 20-28,Glucose 80-115
+,,,Age 20-70,BMI 20-28,Glucose 80-115
+,,,Age 25-70,BMI 20-29,Glucose 85-115
+,,,Age 20-70,BMI 20-29,Glucose 80-120
+,,,Age 20-70,BMI 20-28,Glucose 80-115
