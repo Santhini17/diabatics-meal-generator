@@ -56,9 +56,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const csvFilePath = 'source/ReciepeDataInput.csv';
         fetchDataFromCSV(csvFilePath)
             .then(data => {
-        
                 const mealPlans = generateMealPlans(data);
-                displayMealPlans(mealPlans, mealPlanTable, data);
+                displayMealPlans(mealPlans, mealPlanTable);
                 mealPlanTable.removeChild(loader);
             })
             .catch(error => {
@@ -83,9 +82,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
         for (let day = 0; day < days; day++) {
             const dailyMeals = {
-                Breakfast: getRandomMeals(data),
-                Lunch: getRandomMeals(data),
-                Dinner: getRandomMeals(data),
+                Breakfast: getUniqueMealByOptaType(data, 'Breakfast', mealPlans),
+                Drink: getUniqueMealByOptaType(data, 'Drink', mealPlans),
+                Main: getUniqueMealByOptaType(data, 'Main', mealPlans),
+                Fruits: getUniqueMealByOptaType(data, 'Fruits', mealPlans)
             };
 
             mealPlans.push(dailyMeals);
@@ -94,104 +94,97 @@ document.addEventListener('DOMContentLoaded', function () {
         return mealPlans;
     }
 
-    function getRandomMeals(data) {
-        const randomMeals = [];
-        for (let i = 0; i < 3; i++) {
-            const randomIndex = Math.floor(Math.random() * data.length);
-            randomMeals.push(data[randomIndex]);
+    function getUniqueMealByOptaType(data, optaType, mealPlans) {
+        let meals = data.filter(meal => meal['Opta Type'] === optaType);
+        if (mealPlans.length > 0) {
+            const usedMealIds = mealPlans.map(dailyMeals => dailyMeals[optaType].id);
+            meals = meals.filter(meal => !usedMealIds.includes(meal.id));
         }
-        return randomMeals;
+        return meals[0] || {}; // Return the first unique meal or an empty object
     }
 
-    function displayMealPlans(mealPlans, mealPlanTable, data) {
+    function displayMealPlans(mealPlans, mealPlanTable) {
         mealPlans.forEach((dailyMeals, day) => {
             const dayHeader = document.createElement('h2');
             dayHeader.textContent = `Day ${day + 1}:`;
             mealPlanTable.appendChild(dayHeader);
-    
-            const mealTimes = ['Breakfast', 'Lunch', 'Dinner'];
-            mealTimes.forEach(mealTime => {
-                const mealTimeHeader = document.createElement('h3');
-                mealTimeHeader.textContent = `${mealTime}:`;
-                mealPlanTable.appendChild(mealTimeHeader);
-    
-                const mealsForThisTime = dailyMeals[mealTime];
-    
-                if (mealsForThisTime.length === 0) {
-                    const randomMeal = getRandomMeal(data);
-                    displayMealItem(randomMeal, mealPlanTable);
+
+            const categories = ['Breakfast', 'Drink', 'Main', 'Fruits'];
+            categories.forEach(category => {
+                const categoryHeader = document.createElement('h3');
+                categoryHeader.textContent = `${category}:`;
+                mealPlanTable.appendChild(categoryHeader);
+
+                const meal = dailyMeals[category];
+
+                if (Object.keys(meal).length === 0) {
+                    mealPlanTable.appendChild(document.createTextNode('No meal available'));
                 } else {
-                    mealsForThisTime.forEach(meal => {
-                        displayMealItem(meal, mealPlanTable);
-                    });
+                    displayMealItem(meal, mealPlanTable);
                 }
             });
         });
     }
-    
+
     function displayMealItem(meal, mealPlanTable) {
-        const foodName = meal['Food Name']; 
+        const foodName = meal['Food Name'];
         const foodGroup = meal['Food Group'];
         const foodSubGroup = meal['Food Sub Group'];
-        const servingMeasure = meal['Per Serving Household Measure']; 
-        const optaType = meal['Opta Type']; 
+        const servingMeasure = meal['Per Serving Household Measure'];
+        const optaType = meal['Opta Type'];
         const sugars = meal['Sugars (g)'];
-        const sodium = meal['Sodium  (mg)']; 
-        const carbohydrates = meal['Carbohydrates (kcal)']; 
-        const fats = meal['Fats (kcal)']; 
-        const protein = meal['Protein (kcal)']; 
-        const totalCalories = meal['Total Calories (kcal)']; 
-    
+        const sodium = meal['Sodium  (mg)'];
+        const carbohydrates = meal['Carbohydrates (kcal)'];
+        const fats = meal['Fats (kcal)'];
+        const protein = meal['Protein (kcal)'];
+        const totalCalories = meal['Total Calories (kcal)'];
+
         const mealNameHeader = document.createElement('p');
         mealNameHeader.innerHTML = `Food Name: ${foodName || 'No food available'} , Food Group: ${foodGroup || 'No food group available'} , Food Sub Group: ${foodSubGroup || 'No sub group available'}, Per Serving Household Measure: ${servingMeasure || 'No measure available'}`;
         mealPlanTable.appendChild(mealNameHeader);
-    
-      
+
         if (optaType) {
             const optaTypeHeader = document.createElement('p');
             optaTypeHeader.innerHTML = `Opta Type: ${optaType}`;
             mealPlanTable.appendChild(optaTypeHeader);
         }
-    
+
         if (sugars) {
             const sugarsHeader = document.createElement('p');
             sugarsHeader.innerHTML = `Sugars (g): ${sugars}`;
             mealPlanTable.appendChild(sugarsHeader);
         }
-    
+
         if (sodium) {
             const sodiumHeader = document.createElement('p');
             sodiumHeader.innerHTML = `Sodium (mg): ${sodium}`;
             mealPlanTable.appendChild(sodiumHeader);
         }
-    
+
         if (carbohydrates) {
             const carbohydratesHeader = document.createElement('p');
             carbohydratesHeader.innerHTML = `Carbohydrates (kcal): ${carbohydrates}`;
             mealPlanTable.appendChild(carbohydratesHeader);
         }
-    
+
         if (fats) {
             const fatsHeader = document.createElement('p');
             fatsHeader.innerHTML = `Fats (kcal): ${fats}`;
             mealPlanTable.appendChild(fatsHeader);
         }
-    
+
         if (protein) {
             const proteinHeader = document.createElement('p');
             proteinHeader.innerHTML = `Protein (kcal): ${protein}`;
             mealPlanTable.appendChild(proteinHeader);
         }
-    
+
         if (totalCalories) {
             const totalCaloriesHeader = document.createElement('p');
             totalCaloriesHeader.innerHTML = `Total Calories (kcal): ${totalCalories}`;
             mealPlanTable.appendChild(totalCaloriesHeader);
         }
     }
-
-
-    
 
     const toggleButton = document.getElementById('toggleMenuButton');
     const toggleButtonMobile = document.getElementById('toggleMenuButtonMobile');
