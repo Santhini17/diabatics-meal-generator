@@ -1,6 +1,6 @@
 # diabatics-meal-generator
 
-#Editorial:
+# Editorial:
 
 Color Codes: Change color or add a custom xolor code in Tailwind.config.js.
 
