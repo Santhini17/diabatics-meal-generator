@@ -75,33 +75,35 @@ document.addEventListener('DOMContentLoaded', function () {
         const rows = Papa.parse(text, { header: true }).data;
         return rows;
     }
-
+    
     function generateMealPlans(data) {
         const days = 7;
         const mealPlans = [];
-
+    
         for (let day = 0; day < days; day++) {
             const dailyMeals = {
-                Breakfast: getUniqueMealByOptaType(data, 'Breakfast', mealPlans),
-                Drink: getUniqueMealByOptaType(data, 'Drink', mealPlans),
-                Main: getUniqueMealByOptaType(data, 'Main', mealPlans),
-                Fruits: getUniqueMealByOptaType(data, 'Fruits', mealPlans)
+                Breakfast: getRandomMealByOptaType(data, 'Breakfast'),
+                Drink: getRandomMealByOptaType(data, 'Drink'),
+                Main: getRandomMealByOptaType(data, 'Main'),
+                Fruits: getRandomMealByOptaType(data, 'Fruits')
             };
-
+    
             mealPlans.push(dailyMeals);
         }
-
+    
         return mealPlans;
     }
-
-    function getUniqueMealByOptaType(data, optaType, mealPlans) {
+    
+    function getRandomMealByOptaType(data, optaType) {
         let meals = data.filter(meal => meal['Opta Type'] === optaType);
-        if (mealPlans.length > 0) {
-            const usedMealIds = mealPlans.map(dailyMeals => dailyMeals[optaType].id);
-            meals = meals.filter(meal => !usedMealIds.includes(meal.id));
+        
+        if (meals.length === 0) {
+            return {}; 
         }
-        return meals[0] || {}; // Return the first unique meal or an empty object
-    }
+        
+        const randomIndex = Math.floor(Math.random() * meals.length);
+        return meals[randomIndex];
+    }   
 
     function displayMealPlans(mealPlans, mealPlanTable) {
         mealPlans.forEach((dailyMeals, day) => {
