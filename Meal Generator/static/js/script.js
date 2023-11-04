@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
         mealPlanTable.appendChild(loader);
 
         // Load data from CSV
-        const csvFilePath = 'source/recipes.csv';
+        const csvFilePath = 'source/ReciepeDataInput.csv';
         fetchDataFromCSV(csvFilePath)
             .then(data => {
         
@@ -119,36 +119,78 @@ document.addEventListener('DOMContentLoaded', function () {
     
                 if (mealsForThisTime.length === 0) {
                     const randomMeal = getRandomMeal(data);
-                    const mealName = randomMeal['Recipe'];
-                    const mealIngredients = randomMeal['Ingredients'];
-    
-                    const mealNameHeader = document.createElement('p');
-                    mealNameHeader.innerHTML = `1. Meal Name: ${mealName || 'No meal available'} ,  Ingredients: ${mealIngredients || 'No ingredients available'}`;
-                    mealPlanTable.appendChild(mealNameHeader);
+                    displayMealItem(randomMeal, mealPlanTable);
                 } else {
-                    for (let index = 0; index < 3; index++) {
-                        if (index < mealsForThisTime.length) {
-                            const meal = mealsForThisTime[index];
-                            const mealName = meal['Recipe'];
-                            const mealIngredients = meal['Ingredients'];
-    
-                            const mealNameHeader = document.createElement('p');
-                            mealNameHeader.innerHTML = `${index + 1}. Meal Name: ${mealName || 'No meal available'} ,  Ingredients: ${mealIngredients || 'No ingredients available'}`;
-                            mealPlanTable.appendChild(mealNameHeader);
-                        } else {
-                            const randomMeal = getRandomMeal(data);
-                            const mealName = randomMeal['Recipe'];
-                            const mealIngredients = randomMeal['Ingredients'];
-    
-                            const mealNameHeader = document.createElement('p');
-                            mealNameHeader.innerHTML = `${index + 1}. Meal Name: ${mealName || 'No meal available'} ,  Ingredients: ${mealIngredients || 'No ingredients available'}`;
-                            mealPlanTable.appendChild(mealNameHeader);
-                        }
-                    }
+                    mealsForThisTime.forEach(meal => {
+                        displayMealItem(meal, mealPlanTable);
+                    });
                 }
             });
         });
     }
+    
+    function displayMealItem(meal, mealPlanTable) {
+        const foodName = meal['Food Name']; 
+        const foodGroup = meal['Food Group'];
+        const foodSubGroup = meal['Food Sub Group'];
+        const servingMeasure = meal['Per Serving Household Measure']; 
+        const optaType = meal['Opta Type']; 
+        const sugars = meal['Sugars (g)'];
+        const sodium = meal['Sodium  (mg)']; 
+        const carbohydrates = meal['Carbohydrates (kcal)']; 
+        const fats = meal['Fats (kcal)']; 
+        const protein = meal['Protein (kcal)']; 
+        const totalCalories = meal['Total Calories (kcal)']; 
+    
+        const mealNameHeader = document.createElement('p');
+        mealNameHeader.innerHTML = `Food Name: ${foodName || 'No food available'} , Food Group: ${foodGroup || 'No food group available'} , Food Sub Group: ${foodSubGroup || 'No sub group available'}, Per Serving Household Measure: ${servingMeasure || 'No measure available'}`;
+        mealPlanTable.appendChild(mealNameHeader);
+    
+      
+        if (optaType) {
+            const optaTypeHeader = document.createElement('p');
+            optaTypeHeader.innerHTML = `Opta Type: ${optaType}`;
+            mealPlanTable.appendChild(optaTypeHeader);
+        }
+    
+        if (sugars) {
+            const sugarsHeader = document.createElement('p');
+            sugarsHeader.innerHTML = `Sugars (g): ${sugars}`;
+            mealPlanTable.appendChild(sugarsHeader);
+        }
+    
+        if (sodium) {
+            const sodiumHeader = document.createElement('p');
+            sodiumHeader.innerHTML = `Sodium (mg): ${sodium}`;
+            mealPlanTable.appendChild(sodiumHeader);
+        }
+    
+        if (carbohydrates) {
+            const carbohydratesHeader = document.createElement('p');
+            carbohydratesHeader.innerHTML = `Carbohydrates (kcal): ${carbohydrates}`;
+            mealPlanTable.appendChild(carbohydratesHeader);
+        }
+    
+        if (fats) {
+            const fatsHeader = document.createElement('p');
+            fatsHeader.innerHTML = `Fats (kcal): ${fats}`;
+            mealPlanTable.appendChild(fatsHeader);
+        }
+    
+        if (protein) {
+            const proteinHeader = document.createElement('p');
+            proteinHeader.innerHTML = `Protein (kcal): ${protein}`;
+            mealPlanTable.appendChild(proteinHeader);
+        }
+    
+        if (totalCalories) {
+            const totalCaloriesHeader = document.createElement('p');
+            totalCaloriesHeader.innerHTML = `Total Calories (kcal): ${totalCalories}`;
+            mealPlanTable.appendChild(totalCaloriesHeader);
+        }
+    }
+
+
     
 
     const toggleButton = document.getElementById('toggleMenuButton');
